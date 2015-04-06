@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -14,6 +15,11 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
     }
 
+    // у атрибута пункта меню Settings установлено значение android:onClick="onSettingsMenuClick"
+    public void onSettingsMenuClick(MenuItem item) {
+        TextView infoTextView = (TextView) findViewById(R.id.id_textView);
+        infoTextView.setText("Вы выбрали пункт Settings, лучше бы выбрали кота");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -29,11 +35,21 @@ public class MainActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        TextView infoTextView = (TextView) findViewById(R.id.id_textView);
 
-        return super.onOptionsItemSelected(item);
+        //noinspection SimplifiableIfStatement
+        switch (id) {
+            case R.id.action_cat1:
+                infoTextView.setText("Вы выбрали кота!");
+                return true;
+            case R.id.action_cat2:
+                infoTextView.setText("Вы выбрали кошку!");
+                return true;
+            case R.id.action_cat3:
+                infoTextView.setText("Вы выбрали котёнка!");
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
