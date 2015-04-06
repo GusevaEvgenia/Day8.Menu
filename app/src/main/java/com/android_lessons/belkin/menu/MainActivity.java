@@ -2,11 +2,13 @@ package com.android_lessons.belkin.menu;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -85,7 +87,21 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-
+    public void showToast(View view) {
+        /*//создаем и отображаем текстовое уведомление
+        Toast toast = Toast.makeText(getApplicationContext(),
+                "Пора покормить кота!",
+                Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.TOP, 0, 0);
+        toast.show();*/
+        Toast toast3 = Toast.makeText(getApplicationContext(), "jvbgfhnjbv", Toast.LENGTH_LONG);
+        toast3.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContainer = (LinearLayout) toast3.getView();
+        ImageView catImageView = new ImageView(getApplicationContext());
+        catImageView.setImageResource(R.drawable.screenshot1);
+        toastContainer.addView(catImageView, 0);
+        toast3.show();
+    }
 
 
     // у атрибута пункта меню Settings установлено значение android:onClick="onSettingsMenuClick"
